@@ -1,4 +1,4 @@
-use super::constants::{O_TMPFILE};
+use fcntl::constants::{O_TMPFILE};
 use libc::*;
 use syscall_mgt::syscall_return;
 use va_list::VaList;

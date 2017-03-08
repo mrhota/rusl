@@ -1,5 +1,6 @@
 use libc::c_int;
 
+#[allow(non_snake_case)]
 #[no_mangle]
 pub extern "C" fn _Exit(ec: c_int) -> ! {
     unsafe {
