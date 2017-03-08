@@ -1,6 +1,6 @@
 use core::mem::transmute;
 
-use c_types::*;
+use libc::*;
 use errno::set_errno;
 
 // from musl/src/internal/syscall_ret.c

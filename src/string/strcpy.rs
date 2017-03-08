@@ -1,4 +1,4 @@
-use c_types::*;
+use libc::*;
 use string::stpcpy::stpcpy;
 
 #[no_mangle]

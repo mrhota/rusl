@@ -1,4 +1,4 @@
-use c_types::*;
+use libc::*;
 
 #[no_mangle]
 pub unsafe extern "C" fn access(filename: *const c_schar, amode: c_int) -> c_int {

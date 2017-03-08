@@ -1,4 +1,4 @@
-use c_types::c_int;
+use libc::c_int;
 
 #[no_mangle]
 pub extern "C" fn _Exit(ec: c_int) -> ! {

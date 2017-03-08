@@ -1,6 +1,6 @@
 use core::i32;
 
-use c_types::*;
+use libc::*;
 
 #[no_mangle]
 pub unsafe extern "C" fn strcmp(l: *const c_schar, r: *const c_schar) -> c_int {

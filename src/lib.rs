@@ -31,7 +31,6 @@ pub mod unistd;
 pub mod platform;
 
 pub use platform::atomic;
-pub use platform::c_types;
 pub use platform::errno;
 pub use platform::environ;
 pub use platform::mman;
@@ -45,3 +44,7 @@ use core::intrinsics;
 pub extern "C" fn rust_begin_panic(_msg: core::fmt::Arguments, _file: &'static str, _line: u32) -> ! {
     unsafe { intrinsics::abort() }
 }
+
+#[cfg(not(test))]
+#[lang = "eh_personality"]
+extern "C" fn rust_eh_personality() {}

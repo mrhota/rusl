@@ -1,22 +1,8 @@
 use core::u64;
 
-use c_types::*;
-use errno::{EINVAL, ENOSYS};
+use libc::*;
 
 use time::timespec;
-
-pub const CLOCK_REALTIME: clockid_t = 0;
-pub const CLOCK_MONOTONIC: clockid_t = 1;
-pub const CLOCK_PROCESS_CPUTIME_ID: clockid_t = 2;
-pub const CLOCK_THREAD_CPUTIME_ID: clockid_t = 3;
-pub const CLOCK_MONOTONIC_RAW: clockid_t = 4;
-pub const CLOCK_REALTIME_COARSE: clockid_t = 5;
-pub const CLOCK_MONOTONIC_COARSE: clockid_t = 6;
-pub const CLOCK_BOOTTIME: clockid_t = 7;
-pub const CLOCK_REALTIME_ALARM: clockid_t = 8;
-pub const CLOCK_BOOTTIME_ALARM: clockid_t = 9;
-pub const CLOCK_SGI_CYCLE: clockid_t = 10;
-pub const CLOCK_TAI: clockid_t = 11;
 
 #[no_mangle]
 pub unsafe extern "C" fn __clock_gettime(clock: clockid_t, spec: &mut timespec) -> c_int {
@@ -48,13 +34,12 @@ pub unsafe extern "C" fn clock() -> clock_t {
     };
 
     if clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &mut spec) != 0 {
-        return u64::MAX;
-
+        return -1 as clock_t;
     }
 
     if spec.tv_sec as u64 > u64::MAX / 1_000_000 ||
        (spec.tv_nsec / 1000) as u64 > (u64::MAX - 1_000_000) * spec.tv_sec as u64 {
-        return u64::MAX;
+        return -1 as clock_t;
     }
 
     (spec.tv_sec * 1000000 + spec.tv_nsec / 1000) as clock_t

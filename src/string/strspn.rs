@@ -1,6 +1,6 @@
 use core::usize;
 
-use c_types::*;
+use libc::*;
 
 #[no_mangle]
 pub unsafe extern "C" fn strspn(string: *const c_schar, chars: *const c_schar) -> size_t {

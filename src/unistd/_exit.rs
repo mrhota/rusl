@@ -1,4 +1,4 @@
-use c_types::c_int;
+use libc::c_int;
 use ::exit::_Exit::_Exit;
 
 #[no_mangle]

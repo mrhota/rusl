@@ -1,5 +1,4 @@
-use c_types::*;
-use errno::EINTR;
+use libc::*;
 
 #[no_mangle]
 pub unsafe extern "C" fn close(fd: c_int) -> c_int {

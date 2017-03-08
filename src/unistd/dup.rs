@@ -1,4 +1,4 @@
-use c_types::*;
+use libc::*;
 
 #[no_mangle]
 pub extern "C" fn dup(fd: c_int) -> c_int {

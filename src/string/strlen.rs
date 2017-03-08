@@ -1,7 +1,7 @@
 use core::{usize, mem};
 use super::has_zero;
 
-use c_types::{c_schar, size_t};
+use libc::{c_schar, size_t};
 
 #[no_mangle]
 pub unsafe extern "C" fn strlen(s: *const c_schar) -> size_t {

@@ -1,8 +1,7 @@
-use c_types::*;
+use libc::*;
 use signal::NSIG;
 
-pub use platform::pthread::*;
-
+use platform::LONG_BYTES;
 const SIGMASK_LEN: usize = (NSIG as usize / 8) / LONG_BYTES;
 
 #[repr(C)]

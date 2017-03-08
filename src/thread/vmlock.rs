@@ -1,4 +1,4 @@
-use c_types::*;
+use libc::*;
 use atomic::{a_fetch_add, a_inc};
 use thread::{__wait, __wake};
 

@@ -1,6 +1,6 @@
 pub mod clock;
 
-use c_types::*;
+use libc::*;
 
 #[repr(C)]
 pub struct tm {

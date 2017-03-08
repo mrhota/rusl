@@ -1,5 +1,5 @@
 use core::sync::atomic::{AtomicPtr, Ordering};
-use c_types::*;
+use libc::*;
 
 #[inline(always)]
 #[no_mangle]

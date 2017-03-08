@@ -6,8 +6,8 @@ use memcpy;
 
 use spin::Mutex;
 
-use c_types::*;
-use errno::{set_errno, ENOMEM};
+use libc::*;
+use errno::set_errno;
 use malloc::expand_heap::__expand_heap;
 use mmap::{__madvise, __mmap, __munmap, mremap_helper};
 use platform::atomic::{a_and_64, a_crash, a_ctz_64, a_or_64, a_store, a_swap};

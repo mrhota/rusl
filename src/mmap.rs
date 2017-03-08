@@ -3,8 +3,8 @@ use core::ptr;
 
 use va_list::VaList;
 
-use c_types::*;
-use errno::{set_errno, EPERM, EINVAL, ENOMEM};
+use libc::*;
+use errno::set_errno;
 use platform::mman::*;
 use thread::vmlock::__vm_wait;
 

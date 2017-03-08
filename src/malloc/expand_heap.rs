@@ -2,9 +2,9 @@ use core::num::Wrapping;
 use core::ptr;
 use core::usize;
 
-use c_types::*;
+use libc::*;
 use environ::AUXV_PTR;
-use errno::{set_errno, ENOMEM};
+use errno::set_errno;
 use platform::mman::*;
 use mmap::__mmap;
 

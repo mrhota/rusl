@@ -1,4 +1,4 @@
-use c_types::c_int;
+use libc::c_int;
 use super::_Exit::_Exit;
 
 #[linkage = "weak"]

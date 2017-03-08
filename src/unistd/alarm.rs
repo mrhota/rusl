@@ -1,4 +1,4 @@
-use c_types::*;
+use libc::*;
 
 use time::{itimerval, timeval, ITIMER_REAL};
 

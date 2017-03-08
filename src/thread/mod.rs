@@ -1,9 +1,9 @@
 pub mod pthread;
 pub mod vmlock;
 
-use c_types::*;
+use libc::*;
+use platform::C_INT_MAX;
 use atomic::{a_dec, a_inc, a_spin};
-use errno::ENOSYS;
 
 pub const FUTEX_WAIT: c_int = 0;
 pub const FUTEX_WAKE: c_int = 1;

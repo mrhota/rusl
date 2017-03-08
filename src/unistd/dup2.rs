@@ -1,5 +1,4 @@
-use c_types::*;
-use platform::errno::EBUSY;
+use libc::*;
 use syscall_mgt::syscall_return;
 
 // TODO impl for non-dup2 systems (e.g. aarch64, or1k)
