@@ -40,7 +40,8 @@ pub use platform::signal;
 
 use core::intrinsics;
 #[cfg(not(test))]
+#[no_mangle]
 #[lang = "panic_fmt"]
-extern "C" fn rust_begin_panic(_msg: core::fmt::Arguments, _file: &'static str, _line: u32) -> ! {
+pub extern "C" fn rust_begin_panic(_msg: core::fmt::Arguments, _file: &'static str, _line: u32) -> ! {
     unsafe { intrinsics::abort() }
 }
