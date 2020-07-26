@@ -1,5 +1,13 @@
 #![no_std]
-#![feature(asm, const_fn, lang_items, linkage, compiler_builtins_lib, core_intrinsics)]
+#![feature(asm)]
+#![feature(compiler_builtins_lib)]
+#![feature(const_fn)]
+#![feature(core_intrinsics)]
+#![feature(global_asm)]
+#![feature(lang_items)]
+#![feature(linkage)]
+#![feature(naked_functions)]
+#![feature(untagged_unions)]
 
 #![allow(non_camel_case_types)]
 
@@ -39,8 +47,8 @@ pub use platform::signal;
 
 use core::intrinsics;
 #[cfg(not(test))]
-#[no_mangle]
 #[lang = "panic_fmt"]
+#[no_mangle]
 pub extern "C" fn rust_begin_panic(_msg: core::fmt::Arguments, _file: &'static str, _line: u32) -> ! {
     unsafe { intrinsics::abort() }
 }

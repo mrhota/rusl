@@ -2,6 +2,7 @@ _Exit.o
 _exit.o
 __errno_location.o
 __wait.o
+__syscall_cp.o
 access.o
 acct.o
 alarm.o
@@ -32,10 +33,12 @@ mmap.o
 mremap.o
 munmap.o
 open.o
+pthread_cancel.o
 quick_exit.o
 stpcpy.o
 strcmp.o
 strcpy.o
 strlen.o
 strspn.o
+syscall_cp.o
 vmlock.o

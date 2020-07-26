@@ -19,3 +19,5 @@ pub const PTHREAD_CANCEL_ENABLE: c_int = 0;
 pub const PTHREAD_CANCEL_DISABLE: c_int = 1;
 pub const PTHREAD_CANCEL_MASKED: c_int = 2;
 pub const PTHREAD_CANCELED: *const c_void = -1isize as *const c_void;
+
+mod __syscall_cp_asm;

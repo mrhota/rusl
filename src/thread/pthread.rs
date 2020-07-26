@@ -22,9 +22,9 @@ pub struct pthread {
     pub errno_val: c_int,
 
     // TODO(adam) make these atomic
-    cancel: c_int,
-    canceldisable: c_int,
-    cancelasync: c_int,
+    pub cancel: c_int,
+    pub canceldisable: c_int,
+    pub cancelasync: c_int,
 
     detached: c_int,
     map_base: *mut c_uchar,

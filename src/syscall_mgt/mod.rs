@@ -1,3 +1,5 @@
+pub mod __syscall_cp;
+
 use core::mem::transmute;
 
 use libc::*;
@@ -12,6 +14,21 @@ pub unsafe fn syscall_return(code: usize) -> usize {
     } else {
         code
     }
+}
+
+#[macro_export]
+macro_rules! sys_open_cp {
+    ($pn:expr, $fl:expr)
+        => (::syscall_mgt::__syscall_cp::__syscall_cp(::syscall::nr::OPEN as ::platform::syscall_arg_t,
+                                                      $pn as ::platform::syscall_arg_t,
+                                                      (($fl) | ::fcntl::constants::O_LARGEFILE) as ::platform::syscall_arg_t,
+                                                      0,0,0,0));
+    ($pn:expr, $fl:expr, $mo:expr)
+        => (::syscall_mgt::__syscall_cp::__syscall_cp(::syscall::nr::OPEN as ::libc::c_long,
+                                                      $pn as ::platform::syscall_arg_t,
+                                                      (($fl) | ::fcntl::constants::O_LARGEFILE) as ::platform::syscall_arg_t,
+                                                      $mo as ::platform::syscall_arg_t,
+                                                      0,0,0));
 }
 
 // from the syscall.rs crate, just added the return handling

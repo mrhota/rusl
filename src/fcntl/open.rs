@@ -11,10 +11,10 @@ pub unsafe extern "C" fn open(filename: *const c_char, flags: c_int, mut args: V
         mode = args.get::<mode_t>();
     }
 
-    let fd = syscall!(OPEN, filename, flags, mode);
+    let fd = sys_open_cp!(filename, flags, mode);
     if fd >= 0 && (flags & O_CLOEXEC) != 0 {
         syscall!(FCNTL, fd, F_SETFD, FD_CLOEXEC);
     }
 
-    syscall_return(fd) as c_int
+    syscall_return(fd as usize) as c_int
 }
